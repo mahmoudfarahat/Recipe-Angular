@@ -7,16 +7,20 @@
 </div>
 <div class="row">
   <div class="col-12">
-    <a href="" class="list-group-item clearfix">
-      <div class="pull-left">
-        <h4 class="list-group-item-heading">
-          Recipe Name
-        </h4>
-        <p class="list-group-item-text">
-          description
-        </p>
-        <span class="pull-right"></span>
-      </div>
+   
+    <a class="list-group">
+      <a href="#"   *ngFor="let recipe of recipes" class="list-group-item list-group-item-action  " aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">  {{recipe.name}} </h5>
+          <img   [src]="recipe.imagePath" alt="" class="img-responsive" style="max-height: 80px">
+
+
+        </div>
+        <p class="mb-1"> {{recipe.description}}</p>
+
+      </a>
+
+
     </a>
     <app-recipe-item></app-recipe-item>
 
