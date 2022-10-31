@@ -7,18 +7,20 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" (click)="onSelect('recipe')">Recipes</a>
+        <li class="nav-item" routerLinkActive="active">
+          <!-- <a class="nav-link active" aria-current="page" href="#" (click)="onSelect('recipe')">Recipes</a> -->
+          <a class="nav-link active" aria-current="page" routerLink="recipes"  >Recipes</a>
+
+
+        </li>
+        <li class="nav-item" routerLinkActive="active" >
+          <!-- <a class="nav-link  " aria-current="page" href="#" (click)="onSelect('shopping-List')">Shopping List</a> -->
+          <a class="nav-link  " aria-current="page" routerLink="shopping-list"  >Shopping List</a>
 
 
         </li>
         <li class="nav-item">
-          <a class="nav-link  " aria-current="page" href="#" (click)="onSelect('shopping-List')">Shopping List</a>
-
-
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link"  >Link</a>
         </li>
 
 
