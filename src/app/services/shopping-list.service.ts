@@ -8,7 +8,7 @@ import { Ingredient } from '../shared/ingredient.model';
 export class ShoppingListService {
 // ingredientsChanged = new EventEmitter<Ingredient[]>();
 ingredientsChanged = new Subject<Ingredient[]>();
-
+startedEditing = new Subject<number>();
   constructor() { }
 
 
@@ -17,6 +17,9 @@ ingredientsChanged = new Subject<Ingredient[]>();
     new Ingredient('Tomamtoes', 10)
   ]
 
+  getIndgredient(index: number){
+    return this.ingredients[index]
+  }
 
   getIngredients(){
     console.log(this.ingredients.slice())
@@ -39,4 +42,14 @@ this.ingredientsChanged.next(this.ingredients.slice())
 }
 
 
+updateIngredient(index: number , newIngredient: Ingredient)
+{
+  this.ingredients[index] = newIngredient
+  this.ingredientsChanged.next(this.ingredients.slice())
+}
+deleteIngredient(index:number)
+{
+  this.ingredients.splice(index, 1)
+this.ingredientsChanged.next(this.ingredients.slice())
+}
 }
