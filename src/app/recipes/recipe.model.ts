@@ -5,7 +5,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 
 export class Recipe{
 
-  public id: number
+  public id: string
 
   public name: string
 
@@ -13,7 +13,7 @@ export class Recipe{
   public imagePath :string
   public ingredients: Ingredient[]
 
-  constructor(id:number ,name:string, desc:string, imagePath:string ,ingredients:Ingredient[]){
+  constructor(id:string ,name:string, desc:string, imagePath:string ,ingredients:Ingredient[]){
     this.id = id
     this.name = name
     this.description =desc
