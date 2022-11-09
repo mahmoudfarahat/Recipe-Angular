@@ -28,6 +28,7 @@ recipeForm : FormGroup
   {
     this.reciepeService.updateRecipe(this.id , this.recipeForm.value)
   }else{
+    console.log(this.recipeForm.value)
     this.reciepeService.addRecipe(this.recipeForm.value)
 
 
@@ -70,10 +71,10 @@ recipeForm : FormGroup
     }
 
 this.recipeForm = new FormGroup({
-  'id' :new FormControl(3 , Validators.required),
+  'id' :new FormControl('' , Validators.required),
   'name' : new FormControl(recipeName , Validators.required),
-  'recipeImagePath' : new FormControl(recipeImagePath,Validators.required),
-  'recipDescription' : new FormControl(recipDescription, Validators.required),
+  'imagePath' : new FormControl(recipeImagePath,Validators.required),
+  'description' : new FormControl(recipDescription, Validators.required),
   'ingredients' :recipingredients
 })
   }

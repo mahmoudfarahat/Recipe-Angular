@@ -47,9 +47,11 @@ recipeChanged = new Subject<Recipe[]>();
   }
 
   addRecipe(recipe: Recipe){
+ let lastId =  this.recipes[this.recipes.length -1].id
+ recipe.id = lastId+1;
     this.recipes.push(recipe)
 this.recipeChanged.next(this.recipes.slice())
-   
+
 
 
   }
