@@ -67,8 +67,12 @@ this.recipeChanged.next(this.recipes.slice())
 
   updateRecipe(index : string, newRecipe: Recipe)
   {
-    this.recipes[index] = newRecipe
+
+  this.recipes = this.recipes.map(a=> a.id == newRecipe.id ? newRecipe:a)
+
+
     this.recipeChanged.next(this.recipes.slice())
+
   }
 
 

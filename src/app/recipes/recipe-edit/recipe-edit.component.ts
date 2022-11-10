@@ -26,8 +26,9 @@ recipeForm : FormGroup
 
     if(this.editMode)
   {
-    this.reciepeService.updateRecipe(this.id , this.recipeForm.value)
 
+    this.reciepeService.updateRecipe(this.id , this.recipeForm.value)
+   console.log(this.recipeForm.value)
   }else{
     console.log(this.recipeForm.value)
     this.reciepeService.addRecipe(this.recipeForm.value)
@@ -61,7 +62,9 @@ recipeForm : FormGroup
     let recipingredients = new FormArray([])
     if(this.editMode)
     {
+
       const recipe = this.reciepeService.getRcipeById(this.id)
+      id= recipe.id
       recipeName = recipe.name
       recipeImagePath  = recipe.imagePath
       recipDescription = recipe.description
@@ -74,14 +77,20 @@ recipeForm : FormGroup
         }))
        }
       }
+
     }
 
 this.recipeForm = new FormGroup({
-  'id' :new FormControl(''),
+  'id' :new FormControl(id),
   'name' : new FormControl(recipeName , Validators.required),
   'imagePath' : new FormControl(recipeImagePath,Validators.required),
   'description' : new FormControl(recipDescription, Validators.required),
   'ingredients' :recipingredients
 })
+  }
+
+  onDelete(index : number)
+  {
+(<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
   }
 }
