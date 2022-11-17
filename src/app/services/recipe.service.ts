@@ -1,3 +1,4 @@
+
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import {    Injectable } from '@angular/core';
@@ -42,6 +43,11 @@ recipeChanged = new Subject<Recipe[]>();
     return this.recipes.slice()
   }
 
+  setReicpes(reciepes: Recipe[])
+  {
+this.recipes = reciepes
+this.recipeChanged.next(this.recipes.slice())
+  }
 
   addIngredientToShoppingList(ingredient:Ingredient []){
     this.shoppingListService.addIngredients(ingredient)
