@@ -20,8 +20,8 @@ if(recipes.length === 0){
 
   return this.dataStorageService.fetchRecipes()
 }else{
- 
-  return this.dataStorageService.fetchRecipes()
+
+  return recipes
 }
   }
 
