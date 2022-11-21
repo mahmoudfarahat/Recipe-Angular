@@ -23,7 +23,7 @@ private userSub : Subscription
   }
 
   onStoreRecipes(){
- this.dataStorageService.storeRecipes()
+//  this.dataStorageService.storeRecipes()
 }
 onFetchingRecipes(){
   this.dataStorageService.fetchRecipes().subscribe()

@@ -1,3 +1,4 @@
+import { DataStorageService } from './../shared/data-storage.service';
 
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,9 +12,9 @@ import { ShoppingListService } from './shopping-list.service';
   providedIn: 'root'
 })
 export class RecipeService {
-recipeChanged = new Subject<Recipe[]>();
+// recipeChanged = new Subject<Recipe[]>();
 
-  constructor(private shoppingListService:ShoppingListService , private router : Router) { }
+  constructor(private shoppingListService:ShoppingListService , private router : Router , private dataStorageService:DataStorageService) { }
 
 
 
@@ -43,11 +44,11 @@ recipeChanged = new Subject<Recipe[]>();
     return this.recipes.slice()
   }
 
-  setReicpes(reciepes: Recipe[])
-  {
-this.recipes = reciepes
-this.recipeChanged.next(this.recipes.slice())
-  }
+//   setReicpes(reciepes: Recipe[])
+//   {
+// this.recipes = reciepes
+// this.recipeChanged.next(this.recipes.slice())
+//   }
 
   addIngredientToShoppingList(ingredient:Ingredient []){
     this.shoppingListService.addIngredients(ingredient)
@@ -64,8 +65,13 @@ this.recipeChanged.next(this.recipes.slice())
 //  }
 //  recipe.id = newId+1;
 recipe.id = uuidv4()
-    this.recipes.push(recipe)
-this.recipeChanged.next(this.recipes.slice())
+this.dataStorageService.postRecipe(recipe).subscribe(a => {
+  console.log(a)
+  this.recipes.push(recipe)
+ })
+
+
+// this.recipeChanged.next(this.recipes.slice())
 
 
 
@@ -77,7 +83,7 @@ this.recipeChanged.next(this.recipes.slice())
   this.recipes = this.recipes.map(a=> a.id == newRecipe.id ? newRecipe:a)
 
 
-    this.recipeChanged.next(this.recipes.slice())
+    // this.recipeChanged.next(this.recipes.slice())
 
   }
 
@@ -86,7 +92,7 @@ this.recipeChanged.next(this.recipes.slice())
   {
 
     this.recipes = this.recipes.filter(a=> a.id != index)
-    this.recipeChanged.next(this.recipes.slice())
+    // this.recipeChanged.next(this.recipes.slice())
     this.router.navigate(['/recipes'])
     console.log(index)
     console.log(this.recipes)

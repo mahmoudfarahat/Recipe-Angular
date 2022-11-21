@@ -1,3 +1,4 @@
+import { DataStorageService } from './../../shared/data-storage.service';
 import { Subscription } from 'rxjs';
 import { Recipe } from './../recipe.model';
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
@@ -10,24 +11,20 @@ import { RecipeService } from 'src/app/services/recipe.service';
 })
 export class RecipeListComponent implements OnInit , OnDestroy {
 
-   subscription:Subscription
+  //  subscription:Subscription
 
   recipes : Recipe[]
-  constructor(private recipeService: RecipeService) { }
+  constructor( private dataStorageService: DataStorageService) { }
   ngOnDestroy(): void {
-   this.subscription.unsubscribe()
   }
 
   ngOnInit(): void {
-    this.subscription = this.recipeService.recipeChanged.subscribe((recipes : Recipe[]) =>
-{
-  this.recipes = recipes
-}
-    )
-    this.recipes = this.recipeService.getRecipes()
+    this.dataStorageService.fetchRecipes().subscribe(a=>
+      {
+        this.recipes=a
+        console.log(this.recipes)
+      });
   }
-//   onRecipeSelected(recipe: Recipe,any:any){
-// this.reciprWasSelected.emit(recipe)
-// console.log(any);
-//   }
+
+
 }

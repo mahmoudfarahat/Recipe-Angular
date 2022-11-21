@@ -12,29 +12,33 @@ import { pipe } from 'rxjs';
 })
 export class DataStorageService {
 
-  constructor(private http:HttpClient, private recipeService:RecipeService , private auth:AuthService) { }
+  constructor(private http:HttpClient  , private auth:AuthService) { }
 
-storeRecipes( ){
-const recipes = this.recipeService.getRecipes()
-this.http.put('https://recipes-714bc-default-rtdb.firebaseio.com/recipes.json',recipes).subscribe(a =>{
-  console.log(a)
-})
-}
+// storeRecipes( ){
+// const recipes = this.recipeService.getRecipes()
+// this.http.put('https://recipes-714bc-default-rtdb.firebaseio.com/recipes.json',recipes).subscribe(a =>{
+//   console.log(a)
+// })
+// }
 
 fetchRecipes()
 {
 
     return this.http.get<Recipe[]>('https://recipes-714bc-default-rtdb.firebaseio.com/recipes.json')
     .pipe(map(recipes => {
-    return recipes.map(recipes =>{
-      return {...recipes,ingredients:recipes.ingredients? recipes.ingredients :[]}
-    } )
-  }),
-  tap((a:any) => {
-    this.recipeService.setReicpes(a)
+      if(recipes){
+        recipes = Object.values(recipes)
+        return recipes.map(recipes =>{
+          return {...recipes,ingredients:recipes.ingredients? recipes.ingredients :[]}
+        } )
+      }
+
   }))
+}
 
 
-
+postRecipe(recipe:Recipe)
+{
+  return this.http.post<Recipe[]>('https://recipes-714bc-default-rtdb.firebaseio.com/recipes.json',recipe)
 }
 }
