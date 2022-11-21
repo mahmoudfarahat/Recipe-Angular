@@ -11,15 +11,8 @@ import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {path: '' , redirectTo : '/recipes' ,pathMatch:"full"},
-  {path: 'recipes' , component: RecipesComponent,
-  canActivate:[AuthGuard]  ,children:[
-    {path:'',component: RecipeStartComponent},
-    {path:'new' , component:RecipeEditComponent},
-    {path:':id' , component:RecipeDetailComponent, resolve:[RecipesResolverService]},
-    {path:':id/edit' , component:RecipeEditComponent}
-  ]},
-  {path: 'shopping-list' , component: ShoppingListComponent},
-  { path:'auth',component:AuthComponent}
+  {path:'recipes', loadChildren: () => import('./recipes/recipe.module').then(mod => mod.RecipeModule)},
+
 
 ];
 

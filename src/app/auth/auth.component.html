@@ -4,9 +4,10 @@
   <div class="d-flex justify-content-center mt-5">
 
     <form action=" " [formGroup]="form" style="width: 300px" (ngSubmit)="onSubmit()">
-      <div class="alert alert-danger" *ngIf="error">
+      <!-- <div class="alert alert-danger" *ngIf="error">
         {{error}}
-      </div>
+      </div> -->
+      <app-alert [message]="error" *ngIf="error" (close)="onHandlerError()"></app-alert>
       <div class="form-group">
         <label for="email">E-mail</label>
         <input type="email" formControlName="email" id="email" class="form-control" />

@@ -51,5 +51,8 @@ onSubmit(){
 
   ngOnInit(): void {
    }
-
+   onHandlerError()
+   {
+    this.error =null;
+   }
 }
