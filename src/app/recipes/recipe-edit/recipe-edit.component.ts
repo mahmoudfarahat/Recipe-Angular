@@ -65,20 +65,20 @@ recipeForm : FormGroup
     if(this.editMode)
     {
 
-      const recipe = this.reciepeService.getRcipeById(this.id)
-      id= recipe.id
-      recipeName = recipe.name
-      recipeImagePath  = recipe.imagePath
-      recipDescription = recipe.description
-      if(recipe['ingredients']){
-       for (let ingredient of recipe.ingredients)
-       {
-        recipingredients.push(new FormGroup({
-          'name' : new FormControl(ingredient.name  ,Validators.required),
-          'amount' : new FormControl(ingredient.amount , [Validators.required,Validators.pattern(/^[1-9]+[0-9]*$/)])
-        }))
-       }
-      }
+      // const recipe = this.reciepeService.getRcipeById(this.id)
+      // id= recipe.id
+      // recipeName = recipe.name
+      // recipeImagePath  = recipe.imagePath
+      // recipDescription = recipe.description
+      // if(recipe['ingredients']){
+      //  for (let ingredient of recipe.ingredients)
+      //  {
+      //   recipingredients.push(new FormGroup({
+      //     'name' : new FormControl(ingredient.name  ,Validators.required),
+      //     'amount' : new FormControl(ingredient.amount , [Validators.required,Validators.pattern(/^[1-9]+[0-9]*$/)])
+      //   }))
+      //  }
+      // }
 
     }
 

@@ -5,6 +5,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 
 export class Recipe{
 
+  public uuid:string;
   public id: string
 
   public name: string

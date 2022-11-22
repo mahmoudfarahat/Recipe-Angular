@@ -1,20 +1,17 @@
+<ng-container *ngIf="dataStorageService.isloading; then loading; else data">
+</ng-container>
 
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>
 
-<div class="row">
-  <div class="col-5">
-    <app-recipe-list
-      ></app-recipe-list>
+<ng-template #data>
+  <div class="row">
+    <div class="col-5">
+      <app-recipe-list></app-recipe-list>
+    </div>
+    <div class="col-7 mt-3">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="col-7 mt-3">
-    <!-- <app-recipe-detail
-    *ngIf="selectedRecipe; else infoText"
-    [recipe] = "selectedRecipe"
-    ></app-recipe-detail>
-    <ng-template #infoText>
-      <p>Please select a Recipe!</p>
-    </ng-template> -->
-
-    <router-outlet></router-outlet>
-
-  </div>
-</div>
+</ng-template>

@@ -1,3 +1,4 @@
+import { DataStorageService } from './../../shared/data-storage.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Component,   OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
@@ -12,14 +13,23 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe
 
   id:string ;
+  isLoading:boolean = true;
 
-  constructor(private recipeService:RecipeService ,private route:ActivatedRoute , private router:Router) { }
+  constructor(private recipeService:RecipeService , private DataStorageService:DataStorageService,private route:ActivatedRoute , private router:Router) { }
 
   ngOnInit(): void {
 
 this.route.params.subscribe(a => {
   this.id =  a.id
-  this.recipe = this.recipeService.getRcipeById(this.id)
+
+//  this.recipeService.getRcipeById().subscribe(a =>{
+//   this.recipe = a.find(a => a.id == this.id)
+//  })
+  this.DataStorageService.getById(a.id).subscribe(a=>{
+
+    this.recipe =a
+    this.isLoading = false;
+  });
 
 
 })

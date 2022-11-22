@@ -1,60 +1,73 @@
-<div class="row">
-  <div class="col-12">
-    <img [src]="recipe.imagePath" alt="sdsd" height="400px" />
+<ng-template #loading></ng-template>
+<ng-template #data>
+  <div class="row">
+    <div class="col-12">
+      <img [src]="recipe.imagePath" alt="sdsd" height="400px" />
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <h1>{{ recipe.name }}</h1>
+  <div class="row">
+    <div class="col-12">
+      <h1>{{ recipe.name }}</h1>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div ngbDropdown class="btn-group">
-      <a ngbDropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-        >Manage Recipe
-        <span class="caret"></span>
-      </a>
-      <ul ngbDropdownMenu class="dropdown-menu">
-        <li>
-          <a
-            class="dropdown-item"
-            (click)="onAddToShoppingList()"
-            style="cursor: pointer"
-          >
-            To shopping list</a
-          >
-        </li>
-        <li>
-          <a
-            [routerLink]="['/', 'recipes', recipe.id, 'edit']"
-            class="dropdown-item"
-            style="cursor: pointer"
-          >
-            Edit Recipe</a
-          >
-        </li>
-        <li>
-          <a class="dropdown-item" style="cursor: pointer" (click)="onDeleteRecipe()"> Delete Recipe</a>
+  <div class="row">
+    <div class="col-12">
+      <div ngbDropdown class="btn-group">
+        <a
+          ngbDropdownToggle
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          >Manage Recipe
+          <span class="caret"></span>
+        </a>
+        <ul ngbDropdownMenu class="dropdown-menu">
+          <li>
+            <a
+              class="dropdown-item"
+              (click)="onAddToShoppingList()"
+              style="cursor: pointer"
+            >
+              To shopping list</a
+            >
+          </li>
+          <li>
+            <a
+              [routerLink]="['/', 'recipes', recipe.id, 'edit']"
+              class="dropdown-item"
+              style="cursor: pointer"
+            >
+              Edit Recipe</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              style="cursor: pointer"
+              (click)="onDeleteRecipe()"
+            >
+              Delete Recipe</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ recipe.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-action"
+          *ngFor="let ing of recipe.ingredients"
+        >
+          {{ ing.name }} ({{ ing.amount }})
         </li>
       </ul>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    {{ recipe.description }}
-  </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <ul class="list-group">
-      <li
-        class="list-group-item list-group-item-action"
-        *ngFor="let ing of recipe.ingredients"
-      >
-        {{ ing.name }} ({{ ing.amount }})
-      </li>
-    </ul>
-  </div>
-</div>
+</ng-template>
+<ng-container *ngIf="isLoading; then loading; else data"> </ng-container>
