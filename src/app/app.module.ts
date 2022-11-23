@@ -36,7 +36,6 @@ import { CoreModule } from './core.module';
     FormsModule,
     HttpClientModule,
     HttpClientModule,
-   
     ShoppingModule,
     SharedModule,
     CoreModule,
