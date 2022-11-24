@@ -18,6 +18,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+
+  this.ingredientsService.submitData.subscribe(c=>{
     this.ingredientsService.getIngredients().subscribe((a) => {
       let newArray = [];
       for (let element in a) {
@@ -26,7 +28,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       this.ingredients = newArray;
       console.log(newArray);
     });
-
+  })
 
     this.igChangeSub = this.shoppingListService.ingredientsChanged.subscribe(
       (ingredients: Ingredient[]) => {
