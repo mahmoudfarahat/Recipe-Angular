@@ -21,19 +21,20 @@ startedEditing = new Subject<number>();
     return this.ingredients[index]
   }
 
-  getIngredients(){
-    console.log(this.ingredients.slice())
-    return this.ingredients.slice()
-  }
+  // getIngredients(){
+  //   console.log(this.ingredients.slice())
+  //   return this.ingredients.slice()
+  // }
 
-  addIngredient(ingredient:Ingredient){
-    this.ingredients.push(ingredient)
+//   addIngredient(ingredient:Ingredient){
 
-
-this.ingredientsChanged.next(this.ingredients.slice())
+//     this.ingredients.push(ingredient)
 
 
-  }
+
+
+
+//   }
 
   addIngredients(ingredients: Ingredient[]){
 

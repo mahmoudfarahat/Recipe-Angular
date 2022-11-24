@@ -1,66 +1,84 @@
-import { Subscription } from 'rxjs';
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { IngredientsService } from './../../services/ingredients.service';
+import { Subject, Subscription } from 'rxjs';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+  OnDestroy,
+  Input,
+} from '@angular/core';
+import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { ShoppingListService } from 'src/app/services/shopping-list.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.css']
+  styleUrls: ['./shopping-edit.component.css'],
 })
-export class ShoppingEditComponent implements OnInit ,OnDestroy {
-// @ViewChild('nameInput',{static : false}) nameInputRef: ElementRef;
-// @ViewChild('amountInput',{static : false}) amountInputRef: ElementRef;
-@ViewChild('f') slForm:NgForm
-subscription : Subscription
-editedMode = false
-editedModeIndex:number
-editedItem : Ingredient
-  constructor(private shoppingListService :ShoppingListService) { }
+export class ShoppingEditComponent implements OnInit, OnDestroy {
+  // @ViewChild('nameInput',{static : false}) nameInputRef: ElementRef;
+  // @ViewChild('amountInput',{static : false}) amountInputRef: ElementRef;
+
+
+
+  ingredientsChanged = new Subject<Ingredient[]>();
+
+  subscription: Subscription;
+  editedMode = false;
+  editedModeIndex: number;
+  editedItem: Ingredient;
+  constructor(
+    private shoppingListService: ShoppingListService,
+    private ingredientsService: IngredientsService
+  ) {}
   ngOnDestroy(): void {
-  this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
-
+  form: FormGroup;
   ngOnInit(): void {
-this.subscription = this.shoppingListService.startedEditing.subscribe(
-  (index: number) => {
-    this.editedModeIndex = index
-this.editedMode = true
-this.editedItem = this.shoppingListService.getIndgredient(index)
-this.slForm.setValue({
-  name:this.editedItem.name,
-  amount:this.editedItem.amount
-})
-}
-)
+    this.form = new FormGroup({
+      name: new FormControl(),
+      amount: new FormControl(),
+    });
+
+
+
+
+    this.subscription = this.shoppingListService.startedEditing.subscribe(
+      (index: number) => {
+        this.editedModeIndex = index;
+        this.editedMode = true;
+        this.editedItem = this.shoppingListService.getIndgredient(index);
+
+      }
+    );
   }
 
-  onAddItem(form:NgForm)
-  {
-    // const ingName  = this.nameInputRef.nativeElement.value
-    // const ingAmount = this.amountInputRef.nativeElement.value
-const value = form.value
-const newIngredient = new Ingredient(value.name,value.amount)
-if(this.editedMode  )
-{
-this.shoppingListService.updateIngredient(this.editedModeIndex,newIngredient)
-}else{
-  this.shoppingListService.addIngredient(newIngredient)
-
-}
-this.editedMode = false
-form.reset()
-      console.log(newIngredient)
+  onAddItem() {
+    if (this.editedMode) {
+      // this.shoppingListService.updateIngredient(this.editedModeIndex,newIngredient)
+    } else {
+      // this.shoppingListService.addIngredient(newIngredient)
+      this.ingredientsService.postIngredient(this.form.value).subscribe((a) => {
+        
+      });
     }
-onClear(){
-  this.slForm.reset()
-  this.editedMode = false
-}
-onDelete()
-{
-  this.shoppingListService.deleteIngredient(this.editedModeIndex)
-  this.onClear()
+    this.editedMode = false;
+    // form.reset()
+    // console.log(newIngredient)
+  }
 
-}
+  onClear() {
+
+    this.editedMode = false;
+  }
+
+  onDelete() {
+    this.shoppingListService.deleteIngredient(this.editedModeIndex);
+    this.onClear();
+  }
 }
