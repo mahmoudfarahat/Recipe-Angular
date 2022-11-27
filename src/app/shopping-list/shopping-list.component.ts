@@ -1,9 +1,10 @@
-import { DataStorageService } from './../services/data-storage.service';
+
 import { IngredientsService } from './../services/ingredients.service';
 import { Ingredient } from './../shared/ingredient.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShoppingListService } from '../services/shopping-list.service';
 import { Subscription } from 'rxjs';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -16,7 +17,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   constructor(
     private shoppingListService: ShoppingListService,
     private ingredientsService: IngredientsService,
-    private dataStorageService:DataStorageService
+    private recipeService:RecipeService
   ) {}
 
   ngOnInit(): void {

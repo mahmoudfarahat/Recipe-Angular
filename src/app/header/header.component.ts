@@ -1,7 +1,8 @@
 import { Subscription } from 'rxjs';
 import { AuthService } from './../auth/auth.service';
-import { DataStorageService } from '../services/data-storage.service';
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ islogged = false
 private userSub : Subscription
 @Output() recipes:any =  new EventEmitter<any>()
 
-  constructor(private dataStorageService:DataStorageService, private auth:AuthService ) { }
+  constructor( private recipeService:RecipeService, private auth:AuthService ) { }
 
   ngOnInit(): void {
     this.userSub = this.auth.user.subscribe(a => {
@@ -26,7 +27,7 @@ private userSub : Subscription
 //  this.dataStorageService.storeRecipes()
 }
 onFetchingRecipes(){
-  this.dataStorageService.fetchRecipes().subscribe()
+  this.recipeService.fetchRecipes().subscribe()
 }
 logout()
 {
