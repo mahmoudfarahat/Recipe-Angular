@@ -15,7 +15,7 @@ export class RecipeDetailComponent implements OnInit {
   id:string ;
   isLoading:boolean = true;
 
-  constructor(private recipeService:RecipeService , private DataStorageService:DataStorageService,private route:ActivatedRoute , private router:Router) { }
+  constructor(private recipeService:RecipeService , private dataStorageService:DataStorageService,private route:ActivatedRoute , private router:Router) { }
 
   ngOnInit(): void {
 
@@ -23,7 +23,7 @@ this.route.params.subscribe(a => {
   this.id =  a.id
 
 
-  this.DataStorageService.getById(a.id).subscribe(a=>{
+  this.dataStorageService.getById(a.id).subscribe(a=>{
 
     this.recipe ={...a,uuid:this.id}
     this.isLoading = false;
@@ -39,7 +39,10 @@ this.route.params.subscribe(a => {
   onDeleteRecipe()
   {
     console.log(this.id)
-    this.recipeService.deleteRecipe(this.id)
+    this.dataStorageService.deleteRecipe(this.id).subscribe(a =>{
+      console.log(a)
+    })
+    
 
   }
 

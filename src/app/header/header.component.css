@@ -1,8 +1,11 @@
-.navbar {
-  height: 100px;
+.navbarLenght {
+  height: 70px;
   background-color: rgb(255, 255, 255) !important;
 }
-
+.navbar2Style{
+  background-color: rgb(253, 234, 234) !important;
+padding: 0;
+}
 /* .line:before
 {
   content: '|';
@@ -10,4 +13,12 @@
 
 a:hover{
   cursor: pointer;
+}
+
+.active{
+  background-color: rgb(150, 144, 112) !important;
+}
+
+.active a{
+  color: white !important;
 }

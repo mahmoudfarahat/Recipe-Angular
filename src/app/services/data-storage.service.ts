@@ -62,5 +62,8 @@ getById(id:string){
   return this.http.get<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/recipes/${id}.json`);
 }
 
-
+deleteRecipe(id : string)
+{
+  return this.http.delete<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/recipes/${id}.json`);
+}
 }
