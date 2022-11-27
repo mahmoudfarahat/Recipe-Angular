@@ -54,8 +54,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       console.log(a)
         // this.editedModeIndex = index;
         this.editedMode = true;
+        this.form.get('id').setValue(a.id)
         this.form.get('name').setValue(a.name)
         this.form.get('amount').setValue(a.amount)
+        console.log(this.form.value)
 
         // this.editedItem = this.shoppingListService.getIndgredient(index);
 
@@ -65,7 +67,15 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   onAddItem() {
     if (this.editedMode) {
-      // this.shoppingListService.updateIngredient(this.editedModeIndex,newIngredient)
+      this.ingredientsService.editIngredient(this.form.get('id').value,
+      {
+        name:this.form.get('name').value,
+        amount:this.form.get('amount').value
+      }).subscribe(a=>{
+    
+    this.ingredientsService.submitData.next(a)
+      })
+
     } else {
       // this.shoppingListService.addIngredient(newIngredient)
       this.ingredientsService.postIngredient(this.form.value).subscribe((a) => {

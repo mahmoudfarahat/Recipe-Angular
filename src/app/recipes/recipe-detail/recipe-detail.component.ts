@@ -22,12 +22,10 @@ export class RecipeDetailComponent implements OnInit {
 this.route.params.subscribe(a => {
   this.id =  a.id
 
-//  this.recipeService.getRcipeById().subscribe(a =>{
-//   this.recipe = a.find(a => a.id == this.id)
-//  })
+
   this.DataStorageService.getById(a.id).subscribe(a=>{
 
-    this.recipe =a
+    this.recipe ={...a,uuid:this.id}
     this.isLoading = false;
   });
 
@@ -36,9 +34,6 @@ this.route.params.subscribe(a => {
 
 
 
-  }
-  onAddToShoppingList(){
-this.recipeService.addIngredientToShoppingList(this.recipe.ingredients)
   }
 
   onDeleteRecipe()

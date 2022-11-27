@@ -28,4 +28,10 @@ export class IngredientsService {
   getIngredientById(id:string){
     return this.http.get<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/ingredients/${id}.json`);
   }
+
+  editIngredient(id:string ,fromData)
+  {
+    return this.http.put<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/ingredients/${id}.json` , fromData);
+
+  }
 }

@@ -32,7 +32,7 @@ fetchRecipes()
       if(recipes){
         var currentArray = [];
         for(var key in recipes){
-          console.log(key);
+          // console.log(key);
           currentArray.push({uuid:key, ...recipes[key]});
         }
         // console.log(recipes)
@@ -42,7 +42,7 @@ fetchRecipes()
         //   return {...recipes,ingredients:recipes.ingredients? recipes.ingredients :[]}
         // } )
 
-        console.log(currentArray);
+        // console.log(currentArray);
         return currentArray;
       }
 

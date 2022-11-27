@@ -22,7 +22,7 @@ export class RecipeListComponent implements OnInit , OnDestroy {
     this.dataStorageService.fetchRecipes().subscribe(a=>
       {
         this.recipes=a
-        console.log(this.recipes)
+        // console.log(this.recipes)
       });
 
 

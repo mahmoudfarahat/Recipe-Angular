@@ -1,3 +1,4 @@
+
 import { DataStorageService } from '../../services/data-storage.service';
 import { Recipe } from './../recipe.model';
 import { RecipeService } from './../../services/recipe.service';
@@ -14,9 +15,20 @@ export class RecipeEditComponent implements OnInit {
 id:string
 editMode = false
 recipeForm : FormGroup
-  constructor(private route:ActivatedRoute ,private reciepeService: RecipeService , private router : Router) { }
+  constructor(private route:ActivatedRoute ,
+    private reciepeService: RecipeService ,
+    private router : Router ,
+    private dataStorageService:DataStorageService) { }
 
   ngOnInit(): void {
+    this.recipeForm = new FormGroup({
+      'id' :new FormControl(),
+      'name' : new FormControl( null, Validators.required),
+      'imagePath' : new FormControl(null,Validators.required),
+      'description' : new FormControl(null, Validators.required),
+      'ingredients' :new FormArray([])
+    })
+
     this.route.params.subscribe((param: Params) => {
       this.id =  param['id']
       this.editMode = param['id'] != null
@@ -30,9 +42,9 @@ recipeForm : FormGroup
   {
 
     this.reciepeService.updateRecipe(this.id , this.recipeForm.value)
-   console.log(this.recipeForm.value)
+  //  console.log(this.recipeForm.value)
   }else{
-    console.log(this.recipeForm.value)
+    // console.log(this.recipeForm.value)
     this.reciepeService.addRecipe(this.recipeForm.value)
 
 
@@ -64,7 +76,25 @@ recipeForm : FormGroup
     let recipingredients = new FormArray([])
     if(this.editMode)
     {
+ this.dataStorageService.getById(this.id).subscribe(a => {
+  console.log(a)
+    this.recipeForm.get('name').setValue(a.name)
+    this.recipeForm.get('imagePath').setValue(a.imagePath)
+    this.recipeForm.get('description').setValue(a.description)
+    // this.recipeForm.get('ingredients').setValue(a.ingredients)
+for (let i = 0; i < a.ingredients.length; i++) {
+  console.log(a.ingredients[i]);
+  (this.recipeForm.get('ingredients') as FormArray).push(
+    new FormGroup({
+      'name':new FormControl(a.ingredients[i].name),
+      'amount':new FormControl(a.ingredients[i].amount),
+    })
+  )
+}
+  })
 
+  // console.log(recipe)
+  // this.recipeForm.get('name').setValue(recipe.name);
       // const recipe = this.reciepeService.getRcipeById(this.id)
       // id= recipe.id
       // recipeName = recipe.name
@@ -82,13 +112,7 @@ recipeForm : FormGroup
 
     }
 
-this.recipeForm = new FormGroup({
-  'id' :new FormControl(id),
-  'name' : new FormControl(recipeName , Validators.required),
-  'imagePath' : new FormControl(recipeImagePath,Validators.required),
-  'description' : new FormControl(recipDescription, Validators.required),
-  'ingredients' :recipingredients
-})
+
   }
 
   onDelete(index : number)

@@ -38,10 +38,10 @@ onSubmit(){
   this.authObs =  this.authService.signup(email,password)
   }
   this.authObs.subscribe(a => {
-    console.log(a)
+    // console.log(a)
    this.isLoading=false
       }, errorResponse =>{
-        console.log(errorResponse)
+        // console.log(errorResponse)
         this.error =errorResponse
         this.isLoading= false
       })

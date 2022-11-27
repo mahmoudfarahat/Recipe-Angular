@@ -18,7 +18,7 @@ private userSub : Subscription
   ngOnInit(): void {
     this.userSub = this.auth.user.subscribe(a => {
       this.islogged =!!a
-      console.log(a)
+      // console.log(a)
     })
   }
 

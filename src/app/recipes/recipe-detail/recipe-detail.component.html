@@ -23,16 +23,7 @@
         <ul ngbDropdownMenu class="dropdown-menu">
           <li>
             <a
-              class="dropdown-item"
-              (click)="onAddToShoppingList()"
-              style="cursor: pointer"
-            >
-              To shopping list</a
-            >
-          </li>
-          <li>
-            <a
-              [routerLink]="['/', 'recipes', recipe.id, 'edit']"
+              [routerLink]="['/', 'recipes', recipe.uuid, 'edit']"
               class="dropdown-item"
               style="cursor: pointer"
             >

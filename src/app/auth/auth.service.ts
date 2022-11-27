@@ -37,7 +37,7 @@ private tokenExpirartionTimer: any;
   }
 
 autologout(expirartionDuration : number){
-console.log(expirartionDuration)
+// console.log(expirartionDuration)
 this.tokenExpirartionTimer = setTimeout(() => {
   alert("testing");
 this.logout()
@@ -79,7 +79,7 @@ this.logout()
     console.log(expirationDate);
     const user  =new User(email,userId,token,expirationDate);
     this.user.next(user)
-    console.log(expiresIn*1000);
+    // console.log(expiresIn*1000);
     this.autologout(expiresIn * 1000)
     localStorage.setItem('userData', JSON.stringify(user))
   }
@@ -125,7 +125,7 @@ if(loadedUser.token){
 
   const expirationDuration =  new Date(userData._tokenExpirationData).getTime()-  new Date().getTime()
 
-  console.log(expirationDuration)
+  // console.log(expirationDuration)
   this.autologout(expirationDuration)
 }
 
