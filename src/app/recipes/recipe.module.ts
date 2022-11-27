@@ -9,6 +9,7 @@ import { RecipeListComponent } from "./recipe-list/recipe-list.component";
 import { RecipeStartComponent } from "./recipe-start/recipe-start.component";
 import { RecipesComponent } from "./recipes.component";
 import { SharedModule } from '../shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -31,7 +32,7 @@ import { SharedModule } from '../shared/shared.module';
     RecipeRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-     
+    NgbModule
  ]
 })
 

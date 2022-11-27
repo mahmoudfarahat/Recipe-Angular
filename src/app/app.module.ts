@@ -39,7 +39,8 @@ import { CoreModule } from './core.module';
     ShoppingModule,
     SharedModule,
     CoreModule,
-    AuthModule
+    AuthModule,
+    
   ],
   providers: [
   ],
