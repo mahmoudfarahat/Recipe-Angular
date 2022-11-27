@@ -1,7 +1,7 @@
 
-import { AuthService } from './../auth/auth.service';
-import { RecipeService } from './../services/recipe.service';
-import { Recipe } from './../recipes/recipe.model';
+import { AuthService } from '../auth/auth.service';
+import { RecipeService } from './recipe.service';
+import { Recipe } from '../recipes/recipe.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map , take, tap,exhaustMap } from 'rxjs/operators';
@@ -61,5 +61,6 @@ postRecipe(recipe:Recipe)
 getById(id:string){
   return this.http.get<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/recipes/${id}.json`);
 }
+
 
 }

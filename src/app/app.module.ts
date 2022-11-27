@@ -1,7 +1,7 @@
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 
-import { ShoppingModule } from './shopping-list/shopping.module';
+import { IngredientsModule } from './shopping-list/ingredients.module';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,11 +36,11 @@ import { CoreModule } from './core.module';
     FormsModule,
     HttpClientModule,
     HttpClientModule,
-    ShoppingModule,
+    IngredientsModule,
     SharedModule,
     CoreModule,
     AuthModule,
-    
+
   ],
   providers: [
   ],

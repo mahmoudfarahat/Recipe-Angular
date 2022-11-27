@@ -1,0 +1,13 @@
+.navbar {
+  height: 100px;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+/* .line:before
+{
+  content: '|';
+} */
+
+a:hover{
+  cursor: pointer;
+}

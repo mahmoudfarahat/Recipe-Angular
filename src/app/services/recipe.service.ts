@@ -1,4 +1,4 @@
-import { DataStorageService } from './../shared/data-storage.service';
+import { DataStorageService } from './data-storage.service';
 
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
@@ -69,7 +69,7 @@ recipe.id = uuidv4()
 this.dataStorageService.postRecipe(recipe).subscribe(a => {
 
 
-  
+
   console.log(a)
   this.recipes.push(recipe)
  })

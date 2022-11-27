@@ -2,3 +2,7 @@
 .dropdown-toggle{
   cursor: pointer;
 }
+
+body{
+  background-color: rgb(255, 247, 242);
+}

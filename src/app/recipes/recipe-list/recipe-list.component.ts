@@ -1,4 +1,4 @@
-import { DataStorageService } from './../../shared/data-storage.service';
+import { DataStorageService } from '../../services/data-storage.service';
 import { Subscription } from 'rxjs';
 import { Recipe } from './../recipe.model';
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
@@ -27,5 +27,5 @@ export class RecipeListComponent implements OnInit , OnDestroy {
 
 
   }
- 
+
 }

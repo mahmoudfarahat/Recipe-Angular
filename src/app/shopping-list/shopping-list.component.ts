@@ -1,3 +1,4 @@
+import { DataStorageService } from './../services/data-storage.service';
 import { IngredientsService } from './../services/ingredients.service';
 import { Ingredient } from './../shared/ingredient.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
@@ -14,12 +15,13 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   private igChangeSub: Subscription;
   constructor(
     private shoppingListService: ShoppingListService,
-    private ingredientsService: IngredientsService
+    private ingredientsService: IngredientsService,
+    private dataStorageService:DataStorageService
   ) {}
 
   ngOnInit(): void {
 
-  this.ingredientsService.submitData.subscribe(c=>{
+    this.igChangeSub =this.ingredientsService.submitData.subscribe(c=>{
     this.ingredientsService.getIngredients().subscribe((a) => {
       let newArray = [];
       for (let element in a) {
@@ -30,12 +32,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     });
   })
 
-    this.igChangeSub = this.shoppingListService.ingredientsChanged.subscribe(
-      (ingredients: Ingredient[]) => {
-        this.ingredients = ingredients;
-        console.log(ingredients)
-      }
-    );
+    // this.igChangeSub = this.shoppingListService.ingredientsChanged.subscribe(
+    //   (ingredients: Ingredient[]) => {
+    //     this.ingredients = ingredients;
+    //     console.log(ingredients)
+    //   }
+    // );
   }
 
   ngOnDestroy(): void {
@@ -43,6 +45,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
 
   onEditItem(index: number) {
-    this.shoppingListService.startedEditing.next(index);
+    // console.log(this.ingredients[index]['id'])
+   let  id  = this.ingredients[index]['id']
+console.log(this.ingredients[index]['id'])
+
+this.ingredientsService.getIngredientById(this.ingredients[index]['id']).subscribe(a => {
+
+    this.shoppingListService.startedEditing.next({...a,id:id});
+
+})
   }
 }

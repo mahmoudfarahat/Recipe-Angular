@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 import { AuthService } from './../auth/auth.service';
-import { DataStorageService } from './../shared/data-storage.service';
+import { DataStorageService } from '../services/data-storage.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({

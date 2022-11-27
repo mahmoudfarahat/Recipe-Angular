@@ -41,6 +41,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   form: FormGroup;
   ngOnInit(): void {
     this.form = new FormGroup({
+      id:new FormControl(),
       name: new FormControl(),
       amount: new FormControl(),
     });
@@ -49,10 +50,14 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
 
     this.subscription = this.shoppingListService.startedEditing.subscribe(
-      (index: number) => {
-        this.editedModeIndex = index;
+      (a :any) => {
+      console.log(a)
+        // this.editedModeIndex = index;
         this.editedMode = true;
-        this.editedItem = this.shoppingListService.getIndgredient(index);
+        this.form.get('name').setValue(a.name)
+        this.form.get('amount').setValue(a.amount)
+
+        // this.editedItem = this.shoppingListService.getIndgredient(index);
 
       }
     );
@@ -68,7 +73,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       });
     }
     this.editedMode = false;
-    // form.reset()
+    this.form.reset()
     // console.log(newIngredient)
   }
 

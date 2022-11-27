@@ -1,4 +1,4 @@
-import { DataStorageService } from './../../shared/data-storage.service';
+import { DataStorageService } from '../../services/data-storage.service';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Component,   OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';

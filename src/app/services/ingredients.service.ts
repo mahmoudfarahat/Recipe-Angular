@@ -24,4 +24,8 @@ export class IngredientsService {
     return this.http.get('https://recipes-714bc-default-rtdb.firebaseio.com/ingredients.json')
 
   }
+
+  getIngredientById(id:string){
+    return this.http.get<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/ingredients/${id}.json`);
+  }
 }
