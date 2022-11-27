@@ -10,7 +10,11 @@ padding: 0;
 {
   content: '|';
 } */
-
+ 
+.title span{
+  background-color:rgb(150, 144, 112);color:white;
+      border-radius: 15%;
+}
 a:hover{
   cursor: pointer;
 }

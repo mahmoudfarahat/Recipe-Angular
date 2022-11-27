@@ -20,8 +20,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./shopping-edit.component.css'],
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
-  // @ViewChild('nameInput',{static : false}) nameInputRef: ElementRef;
-  // @ViewChild('amountInput',{static : false}) amountInputRef: ElementRef;
+
 
 
 
@@ -52,14 +51,14 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.subscription = this.shoppingListService.startedEditing.subscribe(
       (a :any) => {
       console.log(a)
-        // this.editedModeIndex = index;
+
         this.editedMode = true;
         this.form.get('id').setValue(a.id)
         this.form.get('name').setValue(a.name)
         this.form.get('amount').setValue(a.amount)
         console.log(this.form.value)
 
-        // this.editedItem = this.shoppingListService.getIndgredient(index);
+
 
       }
     );
@@ -72,28 +71,30 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         name:this.form.get('name').value,
         amount:this.form.get('amount').value
       }).subscribe(a=>{
-    
+
     this.ingredientsService.submitData.next(a)
       })
 
     } else {
-      // this.shoppingListService.addIngredient(newIngredient)
+
       this.ingredientsService.postIngredient(this.form.value).subscribe((a) => {
         this.ingredientsService.submitData.next(a);
       });
     }
     this.editedMode = false;
     this.form.reset()
-    // console.log(newIngredient)
   }
 
   onClear() {
-
+    this.form.reset()
     this.editedMode = false;
   }
 
   onDelete() {
-    this.shoppingListService.deleteIngredient(this.editedModeIndex);
+    this.ingredientsService.delete( this.form.get('id').value).subscribe(a =>{
+      console.log(a)
+      this.ingredientsService.submitData.next(a);
+    })
     this.onClear();
   }
 }

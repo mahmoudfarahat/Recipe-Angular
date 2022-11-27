@@ -1,0 +1,12 @@
+.cards{
+
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+
+
+}
+.cards:hover{
+
+  box-shadow: 5px 6px 6px 2px #e9ecef !important;
+  transform: scale(1.05) !important;
+}

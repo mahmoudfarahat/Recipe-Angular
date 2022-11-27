@@ -34,4 +34,9 @@ export class IngredientsService {
     return this.http.put<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/ingredients/${id}.json` , fromData);
 
   }
+  delete(id:string  )
+  {
+    return this.http.delete<any>(`https://recipes-714bc-default-rtdb.firebaseio.com/ingredients/${id}.json` );
+
+  }
 }

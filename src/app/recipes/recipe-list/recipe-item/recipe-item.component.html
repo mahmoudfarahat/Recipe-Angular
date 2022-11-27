@@ -1,8 +1,12 @@
-<a
+
+
+  <a
+
   [routerLink]="['/recipes', recipe.uuid]"
-  class="list-group"
+  class="list-group mt-1"
   style="text-decoration: none; cursor: pointer"
 >
+<div class="cards">
   <a class="list-group-item list-group-item-action" aria-current="true">
     <div class="d-flex w-100 justify-content-between">
       <div class="">
@@ -12,9 +16,12 @@
       <img
         [src]="recipe.imagePath"
         alt=""
-        class="img-responsive"
+        class="img-responsive "
         style="max-height: 80px"
       />
     </div>
   </a>
+</div>
 </a>
+
+
