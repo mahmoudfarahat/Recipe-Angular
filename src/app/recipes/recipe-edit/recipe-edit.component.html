@@ -72,6 +72,14 @@
             *ngFor="let item of controls; let i = index"
             [formGroupName]="i"
           >
+            <ng-select
+              [items]="cars"
+              bindLabel="name"
+              bindValue="id"
+              [(ngModel)]="selectedCar"
+            >
+            </ng-select>
+
             <div class="col-8">
               <input type="text" formControlName="name" class="form-control" />
             </div>
@@ -83,9 +91,13 @@
               />
             </div>
             <div class="col-2">
-              <button type="button"
-              (click)="onDelete(i)"
-              class="btn btn-danger">X</button>
+              <button
+                type="button"
+                (click)="onDelete(i)"
+                class="btn btn-danger"
+              >
+                X
+              </button>
             </div>
           </div>
           <hr />

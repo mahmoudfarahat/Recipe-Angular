@@ -1,4 +1,4 @@
- 
+
 import { RecipeService } from 'src/app/services/recipe.service';
 import { Component,   OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
@@ -42,6 +42,7 @@ this.route.params.subscribe(a => {
     this.recipeService.deleteRecipe(this.id).subscribe(a =>{
       this.recipeService.recipes.next(a)
       this.router.navigate(['/recipes'])
+
     })
 
 

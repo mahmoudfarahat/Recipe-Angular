@@ -40,7 +40,7 @@ import { CoreModule } from './core.module';
     SharedModule,
     CoreModule,
     AuthModule,
-
+ 
   ],
   providers: [
   ],

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+ 
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { NgModule } from "@angular/core";
 
@@ -21,7 +21,8 @@ exports:[
   DropdownDirective,
   AlertComponent,
   LoadingSpinnerComponent,
-  CommonModule
+  CommonModule,
+
 ]
 })
 
