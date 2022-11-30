@@ -1,3 +1,4 @@
+import { IngredientsService } from './../../services/ingredients.service';
 
 import { Recipe } from './../recipe.model';
 import { RecipeService } from './../../services/recipe.service';
@@ -18,8 +19,11 @@ export class RecipeEditComponent implements OnInit {
     private route: ActivatedRoute,
     private reciepeService: RecipeService,
     private router: Router,
-    private recipeService:RecipeService
+    private ingredientsService :IngredientsService
   ) {}
+
+  selectedCar: string;
+  ingredientsList = []
 
   ngOnInit(): void {
     this.recipeForm = new FormGroup({
@@ -35,13 +39,40 @@ export class RecipeEditComponent implements OnInit {
       this.editMode = param['id'] != null;
       this.initForm();
     });
+
+  this.ingredientsService.getIngredients().subscribe((a:any) => {
+  let newArray = [];
+  let newArray2 =[]
+      for (let element in a) {
+        newArray.push({ id: element, ...a[element] });
+      }
+
+      for ( let element of newArray )
+      {
+         newArray2.push({ id: element.id, name : element.name });
+
+      }
+this.ingredientsList = newArray2
+console.log(this.ingredientsList)
+})
+
   }
+
+//   cars = [
+//     { id: '-NHsuDpQzS-RMHROnwH5', name: 'Volvo' },
+//     { id: 2, name: 'Saab' },
+//     { id: 3, name: 'Opel' },
+//     { id: 4, name: 'Audi' },
+// ];
+
+
   onSubmit() {
+    console.log(this.recipeForm.value)
     if (this.editMode) {
       this.reciepeService
         .updateRecipe(this.id, this.recipeForm.value)
         .subscribe((a) => {
-          console.log(a);
+          // console.log(a);
     this.reciepeService.recipes.next(a)
 
         });
@@ -81,15 +112,18 @@ export class RecipeEditComponent implements OnInit {
         this.recipeForm.get('imagePath').setValue(a.imagePath);
         this.recipeForm.get('description').setValue(a.description);
         // this.recipeForm.get('ingredients').setValue(a.ingredients)
-        for (let i = 0; i < a.ingredients.length; i++) {
-          console.log(a.ingredients[i]);
-          (this.recipeForm.get('ingredients') as FormArray).push(
-            new FormGroup({
-              name: new FormControl(a.ingredients[i].name),
-              amount: new FormControl(a.ingredients[i].amount),
-            })
-          );
+        if(a.ingredients.length > 0){
+          for (let i = 0; i < a.ingredients.length; i++) {
+            console.log(a.ingredients[i]);
+            (this.recipeForm.get('ingredients') as FormArray).push(
+              new FormGroup({
+                name: new FormControl(a.ingredients[i].name),
+                amount: new FormControl(a.ingredients[i].amount),
+              })
+            );
+          }
         }
+
       });
     }
   }
@@ -98,13 +132,6 @@ export class RecipeEditComponent implements OnInit {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
-  selectedCar: number;
 
-  cars = [
-      { id: 1, name: 'Volvo' },
-      { id: 2, name: 'Saab' },
-      { id: 3, name: 'Opel' },
-      { id: 4, name: 'Audi' },
-  ];
 }
 
