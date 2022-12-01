@@ -72,15 +72,18 @@
             *ngFor="let item of controls; let i = index"
             [formGroupName]="i"
           >
+          <div class="col-8">
             <ng-select
-              [items]="ingredientsList"
-              bindLabel="name"
-              bindValue="name"
-              formControlName="name"
-            >
-            </ng-select>
+            [items]="ingredientsList"
+            bindLabel="name"
+            bindValue="name"
+            formControlName="name"
+          >
+          </ng-select>
 
-            {{ selectedCar | json }}
+          </div>
+
+
             <div class="col-2">
               <input
                 type="number"
