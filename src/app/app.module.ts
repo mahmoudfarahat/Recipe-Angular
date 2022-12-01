@@ -1,7 +1,6 @@
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 
-import { IngredientsModule } from './shopping-list/ingredients.module';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeModule } from './recipes/recipe.module';
 
 import { CoreModule } from './core.module';
+import { IngredientsModule } from './ingredients/ingredients.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { CoreModule } from './core.module';
     SharedModule,
     CoreModule,
     AuthModule,
- 
+
   ],
   providers: [
   ],
