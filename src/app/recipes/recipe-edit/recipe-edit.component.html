@@ -75,12 +75,12 @@
             <ng-select
               [items]="ingredientsList"
               bindLabel="name"
-              bindValue="id"
+              bindValue="name"
               formControlName="name"
               [(ngModel)]="selectedCar"
             >
             </ng-select>
-
+{{selectedCar | json}}
             <div class="col-2">
               <input
                 type="number"
@@ -115,3 +115,4 @@
     </form>
   </div>
 </div>
+

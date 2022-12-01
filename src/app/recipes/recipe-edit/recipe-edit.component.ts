@@ -22,8 +22,15 @@ export class RecipeEditComponent implements OnInit {
     private ingredientsService :IngredientsService
   ) {}
 
-  selectedCar: string;
+  selectedCar: any;
   ingredientsList = []
+  cities = [
+    {id: 1, name: 'Vilnius'},
+    {id: 2, name: 'Kaunas'},
+    {id: 3, name: 'Pavilnys', disabled: true},
+    {id: 4, name: 'Pabradė'},
+    {id: 5, name: 'Klaipėda'}
+];
 
   ngOnInit(): void {
     this.recipeForm = new FormGroup({
@@ -114,6 +121,8 @@ console.log(this.ingredientsList)
         // this.recipeForm.get('ingredients').setValue(a.ingredients)
         if(a.ingredients.length > 0){
           for (let i = 0; i < a.ingredients.length; i++) {
+            console.log(1);
+
             console.log(a.ingredients[i]);
             (this.recipeForm.get('ingredients') as FormArray).push(
               new FormGroup({
