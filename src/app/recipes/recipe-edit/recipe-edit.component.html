@@ -77,10 +77,10 @@
               bindLabel="name"
               bindValue="name"
               formControlName="name"
-              [(ngModel)]="selectedCar"
             >
             </ng-select>
-{{selectedCar | json}}
+
+            {{ selectedCar | json }}
             <div class="col-2">
               <input
                 type="number"
@@ -115,4 +115,3 @@
     </form>
   </div>
 </div>
-
