@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { AuthResponseData, AuthService } from './auth.service';
+import { AuthResponseData, AuthService } from '../../services/user/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 

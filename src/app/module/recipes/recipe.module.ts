@@ -1,10 +1,12 @@
+
+
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import {   FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeRoutingModule } from './recipe-routing.module';
 
 
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { RecipeDetailComponent } from "./recipe-detail/recipe-detail.component";
 import { RecipeEditComponent } from "./recipe-edit/recipe-edit.component";
 import { RecipeItemComponent } from "./recipe-list/recipe-item/recipe-item.component";

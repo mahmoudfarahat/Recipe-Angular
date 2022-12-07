@@ -1,6 +1,6 @@
-import { Recipe } from './../../recipe.model';
+import { Recipe } from '../../../../services/recipes/recipe.model';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { RecipeService } from 'src/app/services/recipe.service';
+import { RecipeService } from 'src/app/services/recipes/recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -16,5 +16,5 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
- 
+
 }

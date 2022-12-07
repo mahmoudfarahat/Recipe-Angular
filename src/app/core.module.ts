@@ -1,6 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthInterceptor } from './module/auth/auth.interceptor';
+
 
 
 @NgModule({

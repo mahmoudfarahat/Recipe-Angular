@@ -5,9 +5,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: '' , redirectTo : '/recipes' ,pathMatch:"full"},
-  {path:'recipes', loadChildren: () => import('./recipes/recipe.module').then(mod => mod.RecipeModule)},
-  {path:'shopping-list',loadChildren: () => import('./ingredients/ingredients.module').then(mod => mod.IngredientsModule)},
-  {path:'auth',loadChildren:()=> import('./auth/auth.module').then(mod => mod.AuthModule)}
+  {path:'recipes', loadChildren: () => import('./module/recipes/recipe.module').then(mod => mod.RecipeModule)},
+  {path:'shopping-list',loadChildren: () => import('./module/ingredients/ingredients.module').then(mod => mod.IngredientsModule)},
+  {path:'auth',loadChildren:()=> import('./module/auth/auth.module').then(mod => mod.AuthModule)}
 ];
 
 @NgModule({

@@ -1,10 +1,12 @@
 
-import { IngredientsService } from './../services/ingredients.service';
-import { Ingredient } from './../shared/ingredient.model';
+ import { Ingredient } from '../../services/ingredients/ingredient.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ShoppingListService } from '../services/shopping-list.service';
+
 import { Subscription } from 'rxjs';
-import { RecipeService } from '../services/recipe.service';
+import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
+import { RecipeService } from 'src/app/services/recipes/recipe.service';
+import { ShoppingListService } from 'src/app/services/shopping-list.service';
+
 
 @Component({
   selector: 'app-shopping-list',

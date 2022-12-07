@@ -1,4 +1,4 @@
-import { IngredientsService } from './../../services/ingredients.service';
+
 import { Subject, Subscription } from 'rxjs';
 import {
   Component,
@@ -12,7 +12,9 @@ import {
 } from '@angular/core';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { ShoppingListService } from 'src/app/services/shopping-list.service';
-import { Ingredient } from 'src/app/shared/ingredient.model';
+import { Ingredient } from 'src/app/services/ingredients/ingredient.model';
+import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
+
 
 @Component({
   selector: 'app-shopping-edit',

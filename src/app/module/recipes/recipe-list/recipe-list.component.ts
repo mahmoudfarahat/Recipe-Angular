@@ -1,8 +1,9 @@
 
-import { Subscription } from 'rxjs';
-import { Recipe } from './../recipe.model';
+
+import { Recipe } from '../../../services/recipes/recipe.model';
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
-import { RecipeService } from 'src/app/services/recipe.service';
+import { RecipeService } from 'src/app/services/recipes/recipe.service';
+
 
 @Component({
   selector: 'app-recipe-list',

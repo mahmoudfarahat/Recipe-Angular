@@ -1,4 +1,4 @@
-import { Ingredient } from 'src/app/shared/ingredient.model';
+ 
 import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

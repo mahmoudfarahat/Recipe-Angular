@@ -1,4 +1,6 @@
-import { Ingredient } from 'src/app/shared/ingredient.model';
+import { Ingredient } from "src/app/services/ingredients/ingredient.model";
+
+
 
 
 
