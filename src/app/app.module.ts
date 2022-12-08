@@ -18,6 +18,7 @@ import { CoreModule } from './core.module';
 import { AuthModule } from './module/auth/auth.module';
 import { IngredientsModule } from './module/ingredients/ingredients.module';
 import { SharedModule } from './module/shared/shared.module';
+import { ChefsModule } from './module/chefs/chefs.module';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SharedModule } from './module/shared/shared.module';
     SharedModule,
     CoreModule,
     AuthModule,
+    ChefsModule,
 
   ],
   providers: [
