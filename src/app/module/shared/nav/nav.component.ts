@@ -7,11 +7,11 @@ import { AuthService } from '../../../services/user/auth.service';
 
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class navComponent implements OnInit {
 islogged = false
 private userSub : Subscription
 @Output() recipes:any =  new EventEmitter<any>()

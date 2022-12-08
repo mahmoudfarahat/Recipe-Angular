@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './module/shared/header/header.component';
+import { navComponent } from './module/shared/nav/nav.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,15 +19,14 @@ import { AuthModule } from './module/auth/auth.module';
 import { IngredientsModule } from './module/ingredients/ingredients.module';
 import { SharedModule } from './module/shared/shared.module';
 import { ChefsModule } from './module/chefs/chefs.module';
+import { FooterComponent } from './module/shared/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-
-
-
+    navComponent,
+    FooterComponent
 
   ],
   imports: [
