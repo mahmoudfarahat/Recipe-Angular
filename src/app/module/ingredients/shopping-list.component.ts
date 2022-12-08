@@ -5,7 +5,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
 import { RecipeService } from 'src/app/services/recipes/recipe.service';
-import { ShoppingListService } from 'src/app/services/shopping-list.service';
+
 
 
 @Component({
@@ -17,7 +17,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: Ingredient[];
   private igChangeSub: Subscription;
   constructor(
-    private shoppingListService: ShoppingListService,
+
     private ingredientsService: IngredientsService,
     private recipeService:RecipeService
   ) {}
@@ -35,12 +35,7 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     });
   })
 
-    // this.igChangeSub = this.shoppingListService.ingredientsChanged.subscribe(
-    //   (ingredients: Ingredient[]) => {
-    //     this.ingredients = ingredients;
-    //     console.log(ingredients)
-    //   }
-    // );
+
   }
 
   ngOnDestroy(): void {
@@ -54,7 +49,7 @@ console.log(this.ingredients[index]['id'])
 
 this.ingredientsService.getIngredientById(this.ingredients[index]['id']).subscribe(a => {
 
-    this.shoppingListService.startedEditing.next({...a,id:id});
+    this.ingredientsService.startedEditing.next({...a,id:id});
 
 })
   }

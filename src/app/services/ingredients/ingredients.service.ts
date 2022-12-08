@@ -1,4 +1,4 @@
- 
+
 import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,6 +10,9 @@ export class IngredientsService {
 
 
   submitData = new BehaviorSubject<any>(null)
+
+  startedEditing = new Subject<number>();
+
   constructor(private http:HttpClient) { }
 
 

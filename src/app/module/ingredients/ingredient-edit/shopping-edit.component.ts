@@ -2,16 +2,14 @@
 import { Subject, Subscription } from 'rxjs';
 import {
   Component,
-  ElementRef,
-  EventEmitter,
+ 
   OnInit,
-  Output,
-  ViewChild,
+
   OnDestroy,
-  Input,
+
 } from '@angular/core';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
-import { ShoppingListService } from 'src/app/services/shopping-list.service';
+
 import { Ingredient } from 'src/app/services/ingredients/ingredient.model';
 import { IngredientsService } from 'src/app/services/ingredients/ingredients.service';
 
@@ -33,7 +31,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   editedModeIndex: number;
   editedItem: Ingredient;
   constructor(
-    private shoppingListService: ShoppingListService,
+
     private ingredientsService: IngredientsService
   ) {}
   ngOnDestroy(): void {
@@ -50,7 +48,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
 
 
-    this.subscription = this.shoppingListService.startedEditing.subscribe(
+    this.subscription = this.ingredientsService.startedEditing.subscribe(
       (a :any) => {
       console.log(a)
 

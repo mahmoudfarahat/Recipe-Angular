@@ -1,12 +1,12 @@
 
 
-import { Recipe } from '../recipes/recipe.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
+ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map , take, tap,exhaustMap } from 'rxjs/operators';
 import { pipe, BehaviorSubject, Subject } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from '../user/auth.service';
+import { Recipe } from './recipe.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +19,7 @@ export class RecipeService {
   public isloading = false;
   constructor(private http:HttpClient  , private auth:AuthService) { }
 
- 
+
 
 fetchRecipes()
 {
