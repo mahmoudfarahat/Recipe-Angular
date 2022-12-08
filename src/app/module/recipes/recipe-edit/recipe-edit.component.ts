@@ -64,13 +64,6 @@ console.log(this.ingredientsList)
 
   }
 
-//   cars = [
-//     { id: '-NHsuDpQzS-RMHROnwH5', name: 'Volvo' },
-//     { id: 2, name: 'Saab' },
-//     { id: 3, name: 'Opel' },
-//     { id: 4, name: 'Audi' },
-// ];
-
 
   onSubmit() {
     console.log(this.recipeForm.value)
@@ -78,7 +71,7 @@ console.log(this.ingredientsList)
       this.reciepeService
         .updateRecipe(this.id, this.recipeForm.value)
         .subscribe((a) => {
-          // console.log(a);
+     
     this.reciepeService.recipes.next(a)
 
         });

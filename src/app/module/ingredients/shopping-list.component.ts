@@ -19,16 +19,15 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   constructor(
 
     private ingredientsService: IngredientsService,
-    private recipeService:RecipeService
   ) {}
 
   ngOnInit(): void {
 
     this.igChangeSub =this.ingredientsService.submitData.subscribe(c=>{
-    this.ingredientsService.getIngredients().subscribe((a) => {
+    this.ingredientsService.getIngredients().subscribe((ingredients) => {
       let newArray = [];
-      for (let element in a) {
-        newArray.push({ id: element, ...a[element] });
+      for (let ingredient in ingredients) {
+        newArray.push({ id: ingredient, ...ingredients[ingredient] });
       }
       this.ingredients = newArray;
       console.log(newArray);

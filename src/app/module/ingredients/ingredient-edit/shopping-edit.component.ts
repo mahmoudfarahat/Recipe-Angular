@@ -2,7 +2,7 @@
 import { Subject, Subscription } from 'rxjs';
 import {
   Component,
- 
+
   OnInit,
 
   OnDestroy,
@@ -49,14 +49,14 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
 
     this.subscription = this.ingredientsService.startedEditing.subscribe(
-      (a :any) => {
-      console.log(a)
+      (ingredient:any) => {
+
 
         this.editedMode = true;
-        this.form.get('id').setValue(a.id)
-        this.form.get('name').setValue(a.name)
-        this.form.get('amount').setValue(a.amount)
-        console.log(this.form.value)
+        this.form.get('id').setValue(ingredient.id)
+        this.form.get('name').setValue(ingredient.name)
+        this.form.get('amount').setValue(ingredient.amount)
+
 
 
 
@@ -70,15 +70,15 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       {
         name:this.form.get('name').value,
         amount:this.form.get('amount').value
-      }).subscribe(a=>{
+      }).subscribe(ingredient=>{
 
-    this.ingredientsService.submitData.next(a)
+    this.ingredientsService.submitData.next(ingredient)
       })
 
     } else {
 
-      this.ingredientsService.postIngredient(this.form.value).subscribe((a) => {
-        this.ingredientsService.submitData.next(a);
+      this.ingredientsService.postIngredient(this.form.value).subscribe((ingredient) => {
+        this.ingredientsService.submitData.next(ingredient);
       });
     }
     this.editedMode = false;
@@ -91,9 +91,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.ingredientsService.delete( this.form.get('id').value).subscribe(a =>{
-      console.log(a)
-      this.ingredientsService.submitData.next(a);
+    this.ingredientsService.delete( this.form.get('id').value).subscribe(ingredient =>{
+    
+      this.ingredientsService.submitData.next(ingredient);
     })
     this.onClear();
   }
