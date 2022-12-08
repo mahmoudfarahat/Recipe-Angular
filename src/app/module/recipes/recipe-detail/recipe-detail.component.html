@@ -1,8 +1,9 @@
 <ng-template #loading></ng-template>
 <ng-template #data>
   <div class="row">
-    <div class="col-12">
-      <img [src]="recipe.imagePath" alt="sdsd" height="400px" class="bg-image hover-zoom" />
+    <div class="col-12 mt-3 d-flex justify-content-center">
+      <img [src]="recipe.imagePath" alt="sdsd"
+      height="350px" class="bg-image hover-zoom img-responsive " style="border-radius: 5%;" />
     </div>
   </div>
   <div class="row">
@@ -16,7 +17,8 @@
         <a
           ngbDropdownToggle
           type="button"
-          class="btn btn-primary dropdown-toggle"
+          class="btn   dropdown-toggle"
+          style=" background-color: rgb(150, 144, 112) !important; color: white;"
           >Manage Recipe
           <span class="caret"></span>
         </a>
@@ -44,7 +46,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-2 mt-2">
       {{ recipe.description }}
     </div>
   </div>
